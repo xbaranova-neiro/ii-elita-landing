@@ -162,7 +162,7 @@ export default function Home() {
 
           <div className="hero-visual">
             <div className="visual-field"><b>AI</b><span>BUSINESS<br />CONTENT<br />CODE</span></div>
-            <img className="hero-person-image" src="/ksenia-red.png" width="1751" height="2400" fetchPriority="high" alt="Ксения Баранова — автор курса" />
+            <img className="hero-person-image" src="./ksenia-red.png" width="1751" height="2400" fetchPriority="high" alt="Ксения Баранова — автор курса" />
             <div className="author-tag"><small>АВТОР КУРСА</small><b>Ксения Баранова</b><span>16 лет в образовании<br />400 000+ учеников</span></div>
           </div>
         </section>
@@ -200,7 +200,7 @@ export default function Home() {
           <div className="passport-copy"><small>ОФИЦИАЛЬНОЕ ПОДТВЕРЖДЕНИЕ</small><h2>Именной<br /><em>нейропаспорт</em></h2><p>Документ от лицензированной образовательной школы для портфолио и подтверждения продвинутого уровня.</p></div>
           <div className="passport-card">
             <div className="passport-head"><Sparkles /><span>NEURO PASSPORT</span><small>ADVANCED · 2026</small></div>
-            <div className="passport-portrait"><img src="/ksenia-red.png" alt="Пример фотографии в нейропаспорте" /></div>
+            <div className="passport-portrait"><img src="./ksenia-red.png" alt="Пример фотографии в нейропаспорте" /></div>
             <div className="passport-identity"><small>ИМЕННОЙ ЦИФРОВОЙ ДОКУМЕНТ</small><strong>КСЕНИЯ<br />БАРАНОВА</strong><span>AI CREATOR · AGENT BUILDER</span></div>
             <div className="passport-holo"><span>AI</span></div>
             <div className="passport-serial">ID · KB 0009 / 2026</div>
