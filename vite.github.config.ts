@@ -1,0 +1,21 @@
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import react from '@vitejs/plugin-react';
+import tailwindcss from '@tailwindcss/postcss';
+import { defineConfig } from 'vite';
+
+const rootDir = path.dirname(fileURLToPath(import.meta.url));
+const repositoryName = process.env.GITHUB_REPOSITORY?.split('/')[1] ?? 'ii-elita-landing';
+
+export default defineConfig({
+  root: path.join(rootDir, 'github'),
+  base: process.env.GITHUB_ACTIONS ? `/${repositoryName}/` : '/',
+  publicDir: path.join(rootDir, 'public'),
+  css: { postcss: { plugins: [tailwindcss()] } },
+  plugins: [react()],
+  resolve: { alias: { '@': rootDir } },
+  build: {
+    outDir: path.join(rootDir, 'github-dist'),
+    emptyOutDir: true,
+  },
+});

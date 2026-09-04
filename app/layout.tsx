@@ -1,9 +1,13 @@
 import type { Metadata } from 'next';
-import { Manrope, Space_Grotesk } from 'next/font/google';
+import { Manrope, Montserrat } from 'next/font/google';
 import './globals.css';
 
 const manrope = Manrope({ variable: '--font-manrope', subsets: ['cyrillic', 'latin'] });
-const space = Space_Grotesk({ variable: '--font-space', subsets: ['latin'] });
+const montserrat = Montserrat({
+  variable: '--font-montserrat',
+  subsets: ['cyrillic', 'latin'],
+  weight: ['600', '700', '800', '900'],
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://ii-elita-lab.karina-komyak.chatgpt.site'),
@@ -23,5 +27,5 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="ru"><body className={`${manrope.variable} ${space.variable}`}>{children}</body></html>;
+  return <html lang="ru"><body className={`${manrope.variable} ${montserrat.variable}`}>{children}</body></html>;
 }
