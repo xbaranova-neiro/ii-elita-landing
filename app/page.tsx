@@ -146,8 +146,8 @@ export default function Home() {
           <div className="hero-copy">
             <div className="pill"><span>NEW</span> ПРАКТИЧЕСКИЙ 3‑ДНЕВНЫЙ ОНЛАЙН‑КУРС</div>
             <h1>Погружение<br />в <em>ИИ‑элиту</em></h1>
-            <p className="hero-subtitle">Создание контента, автоматизация и вайбкодинг для бизнеса и фриланса</p>
-            <p className="hero-description"><strong>Освойте технологии, о которых 98% ИИ‑рынка ещё не знают.</strong><span>Научитесь генерировать фото и видео высшего качества, запускать автономных ИИ‑агентов на MyBotica и заменять дорогие сервисы собственными приложениями.</span></p>
+            <p className="hero-subtitle">Контент, автоматизация и вайбкодинг — за 3 практических дня</p>
+            <p className="hero-description"><strong>Освойте ИИ‑инструменты, которые уже дают преимущество.</strong><span>Соберите агента на MyBotica, создайте продающий визуал и собственный веб‑сервис — без кода.</span></p>
             <div className="hero-action">
               <a href="#register">Занять место бесплатно <ArrowRight /></a>
               <p><b>0 ₽</b><span>Участие<br />бесплатное</span></p>
@@ -276,7 +276,14 @@ export default function Home() {
               <a className="mybotica-link" href="https://mybotica.pro/" target="_blank" rel="noreferrer">Познакомиться с MyBotica <ArrowRight /></a>
             </div>
           </article>
-          <article className="portfolio-media"><div className="artifact-head"><span>02</span><b>AI MEDIA</b></div><div className="media-frame"><span>9:16</span><Film /></div><h3>Фото и киношный ролик</h3><p>Визуальная серия и видео с цифровым аватаром без съёмочной группы.</p></article>
+          <article className="portfolio-media">
+            <div className="artifact-head"><span>02</span><b>AI MEDIA · ГОТОВЫЕ РАБОТЫ</b></div>
+            <div className="video-showcase">
+              <figure><video controls playsInline preload="metadata" poster="./ai-video-01-poster.jpg"><source src="./ai-video-01.mp4" type="video/mp4" /></video><figcaption>AI STORY · 00:13</figcaption></figure>
+              <figure><video controls playsInline preload="metadata" poster="./ai-video-02-poster.jpg"><source src="./ai-video-02.mp4" type="video/mp4" /></video><figcaption>DIGITAL AVATAR · 00:30</figcaption></figure>
+            </div>
+            <h3>AI‑видео: от идеи до готового ролика</h3><p>Сценарий, визуальный стиль, генерация сцен, цифровые аватары и финальный монтаж — без съёмочной группы.</p>
+          </article>
           <article className="portfolio-app"><div className="artifact-head"><span>03</span><b>VIBE CODE</b></div><div className="app-window"><i /><i /><i /><span>Ваш веб‑сервис</span></div><Code2 /><h3>Собственное приложение</h3><p>Рабочий сервис под вашу задачу — собранный через промпты без программиста.</p></article>
         </div>
       </section>
@@ -329,7 +336,7 @@ export default function Home() {
         <div className="shell footer-main">
           <div className="footer-brand">
             <a href="#top" className="footer-name">Ксения Баранова</a>
-            <strong>Школа SMM и нейросетей</strong>
+            <strong>Школа ИИ‑технологий</strong>
             <p>Практический трёхдневный онлайн‑курс по ИИ: контент, автономные агенты, автоматизация и собственные веб‑сервисы без кода.</p>
             <a className="footer-email" href="mailto:hello@xeniabaranova-school.ru">hello@xeniabaranova-school.ru</a>
           </div>
