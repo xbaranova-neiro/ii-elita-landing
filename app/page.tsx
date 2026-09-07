@@ -284,8 +284,8 @@ export default function Home() {
           <article className="portfolio-media">
             <div className="artifact-head"><span>02</span><b>AI MEDIA · ГОТОВЫЕ РАБОТЫ</b></div>
             <div className="video-showcase">
-              <figure><video controls playsInline preload="metadata" poster="./ai-video-01-poster.jpg"><source src="./ai-video-01.mp4" type="video/mp4" /></video><figcaption>AI STORY · 00:13</figcaption></figure>
-              <figure><video controls playsInline preload="metadata" poster="./ai-video-02-poster.jpg"><source src="./ai-video-02.mp4" type="video/mp4" /></video><figcaption>DIGITAL AVATAR · 00:30</figcaption></figure>
+              <figure><video autoPlay muted loop playsInline preload="auto" poster="./ai-video-01-poster.jpg" aria-label="Пример рекламной AI-истории"><source src="./ai-video-01.mp4" type="video/mp4" /></video><figcaption>AI STORY · LOOP</figcaption></figure>
+              <figure><video autoPlay muted loop playsInline preload="auto" poster="./ai-video-02-poster.jpg" aria-label="Пример видео с цифровым аватаром"><source src="./ai-video-02.mp4" type="video/mp4" /></video><figcaption>DIGITAL AVATAR · LOOP</figcaption></figure>
             </div>
             <h3>AI‑видео: от идеи до готового ролика</h3><p>Сценарий, визуальный стиль, генерация сцен, цифровые аватары и финальный монтаж — без съёмочной группы.</p>
           </article>
