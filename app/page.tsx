@@ -146,8 +146,8 @@ export default function Home() {
           <div className="hero-copy">
             <div className="pill"><span>NEW</span> ПРАКТИЧЕСКИЙ 3‑ДНЕВНЫЙ ОНЛАЙН‑КУРС</div>
             <h1>Погружение<br />в <em>ИИ‑элиту</em></h1>
-            <p className="hero-subtitle">Контент, автоматизация и вайбкодинг — за 3 практических дня</p>
-            <p className="hero-description"><strong>Освойте ИИ‑инструменты, которые уже дают преимущество.</strong><span>Соберите агента на MyBotica, создайте продающий визуал и собственный веб‑сервис — без кода.</span></p>
+            <p className="hero-subtitle">Создание контента, автоматизация и вайбкодинг для бизнеса и фриланса</p>
+            <p className="hero-description"><strong>Освойте технологии, о которых 98% ИИ‑рынка ещё не знают.</strong><span>Научитесь генерировать фото и видео высшего качества, запускать автономных ИИ‑агентов на MyBotica и заменять дорогие сервисы собственными приложениями.</span></p>
             <div className="hero-action">
               <a href="#register">Занять место бесплатно <ArrowRight /></a>
               <p><b>0 ₽</b><span>Участие<br />бесплатное</span></p>
