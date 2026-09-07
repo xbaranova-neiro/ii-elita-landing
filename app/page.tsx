@@ -1,6 +1,6 @@
 'use client';
 
-import { FormEvent, useState } from 'react';
+import { FormEvent, useEffect, useRef, useState } from 'react';
 import {
   ArrowRight,
   Award,
@@ -127,6 +127,36 @@ function RegisterForm() {
   );
 }
 
+function AutoLoopVideo({ src, poster, label }: { src: string; poster: string; label: string }) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [shouldLoad, setShouldLoad] = useState(false);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    if (!('IntersectionObserver' in window)) {
+      setShouldLoad(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setShouldLoad(true);
+        observer.disconnect();
+      }
+    }, { rootMargin: '600px 0px' });
+
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (shouldLoad) videoRef.current?.play().catch(() => undefined);
+  }, [shouldLoad]);
+
+  return <video ref={videoRef} autoPlay muted loop playsInline preload="none" poster={poster} src={shouldLoad ? src : undefined} aria-label={label} />;
+}
+
 type HomeProps = {
   variant?: 'full' | 'short';
   assetBase?: string;
@@ -175,7 +205,7 @@ export default function Home({ variant = 'full', assetBase = './' }: HomeProps) 
 
           <div className="hero-visual">
             <div className="visual-field"><b>AI</b><span>BUSINESS<br />CONTENT<br />CODE</span></div>
-            <img className="hero-person-image" src={asset('ksenia-red.png')} width="1751" height="2400" fetchPriority="high" alt="Ксения Баранова — автор курса" />
+            <img className="hero-person-image" src={asset('ksenia-red.webp')} width="1751" height="2400" fetchPriority="high" decoding="async" alt="Ксения Баранова — автор курса" />
             <div className="author-tag"><small>АВТОР КУРСА</small><b>Ксения Баранова</b><span>16 лет в образовании<br />400 000+ учеников</span></div>
           </div>
         </section>
@@ -213,7 +243,7 @@ export default function Home({ variant = 'full', assetBase = './' }: HomeProps) 
           <div className="passport-copy"><small>ОФИЦИАЛЬНОЕ ПОДТВЕРЖДЕНИЕ</small><h2>Именной<br /><em>нейропаспорт</em></h2><p>Документ от лицензированной образовательной школы для портфолио и подтверждения продвинутого уровня.</p></div>
           <div className="passport-card">
             <div className="passport-head"><Sparkles /><span>NEURO PASSPORT</span><small>ADVANCED · 2026</small></div>
-            <div className="passport-portrait"><img src={asset('ksenia-red.png')} alt="Пример фотографии в нейропаспорте" /></div>
+            <div className="passport-portrait"><img src={asset('ksenia-red.webp')} loading="lazy" decoding="async" alt="Пример фотографии в нейропаспорте" /></div>
             <div className="passport-identity"><small>ИМЕННОЙ ЦИФРОВОЙ ДОКУМЕНТ</small><strong>КСЕНИЯ<br />БАРАНОВА</strong><span>AI CREATOR · AGENT BUILDER</span></div>
             <div className="passport-holo"><span>AI</span></div>
             <div className="passport-serial">ID · KB 0009 / 2026</div>
@@ -292,8 +322,8 @@ export default function Home({ variant = 'full', assetBase = './' }: HomeProps) 
           <article className="portfolio-media">
             <div className="artifact-head"><span>02</span><b>AI MEDIA · ГОТОВЫЕ РАБОТЫ</b></div>
             <div className="video-showcase">
-              <figure><video autoPlay muted loop playsInline preload="auto" poster={asset('ai-video-01-poster.jpg')} aria-label="Пример рекламной AI-истории"><source src={asset('ai-video-01.mp4')} type="video/mp4" /></video><figcaption>AI STORY · LOOP</figcaption></figure>
-              <figure><video autoPlay muted loop playsInline preload="auto" poster={asset('ai-video-02-poster.jpg')} aria-label="Пример видео с цифровым аватаром"><source src={asset('ai-video-02.mp4')} type="video/mp4" /></video><figcaption>DIGITAL AVATAR · LOOP</figcaption></figure>
+              <figure><AutoLoopVideo src={asset('ai-video-01.mp4')} poster={asset('ai-video-01-poster.jpg')} label="Пример рекламной AI-истории" /><figcaption>AI STORY · LOOP</figcaption></figure>
+              <figure><AutoLoopVideo src={asset('ai-video-02.mp4')} poster={asset('ai-video-02-poster.jpg')} label="Пример видео с цифровым аватаром" /><figcaption>DIGITAL AVATAR · LOOP</figcaption></figure>
             </div>
             <h3>AI‑видео: от идеи до готового ролика</h3><p>Сценарий, визуальный стиль, генерация сцен, цифровые аватары и финальный монтаж — без съёмочной группы.</p>
           </article>
