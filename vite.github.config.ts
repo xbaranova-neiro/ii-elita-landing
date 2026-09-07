@@ -17,5 +17,11 @@ export default defineConfig({
   build: {
     outDir: path.join(rootDir, 'github-dist'),
     emptyOutDir: true,
+    rollupOptions: {
+      input: {
+        main: path.join(rootDir, 'github/index.html'),
+        short: path.join(rootDir, 'github/short/index.html'),
+      },
+    },
   },
 });

@@ -127,7 +127,15 @@ function RegisterForm() {
   );
 }
 
-export default function Home() {
+type HomeProps = {
+  variant?: 'full' | 'short';
+  assetBase?: string;
+};
+
+export default function Home({ variant = 'full', assetBase = './' }: HomeProps) {
+  const isShort = variant === 'short';
+  const asset = (name: string) => `${assetBase}${name}`;
+
   return (
     <main className="site">
       <div className="hero-stage" id="top">
@@ -162,12 +170,12 @@ export default function Home() {
               <span><b>9 работ</b><small>в вашем портфолио</small></span>
               <span><b>−80%</b><small>рутины с помощью ИИ</small></span>
             </div>
-            <a className="gift-teaser" href="#gift"><Gift /><span><small>ПОДАРОК ЗА РЕГИСТРАЦИЮ</small><b>Персональный тест «Ваш ИИ‑архетип»</b></span><ArrowRight /></a>
+            {!isShort && <a className="gift-teaser" href="#gift"><Gift /><span><small>ПОДАРОК ЗА РЕГИСТРАЦИЮ</small><b>Персональный тест «Ваш ИИ‑архетип»</b></span><ArrowRight /></a>}
           </div>
 
           <div className="hero-visual">
             <div className="visual-field"><b>AI</b><span>BUSINESS<br />CONTENT<br />CODE</span></div>
-            <img className="hero-person-image" src="./ksenia-red.png" width="1751" height="2400" fetchPriority="high" alt="Ксения Баранова — автор курса" />
+            <img className="hero-person-image" src={asset('ksenia-red.png')} width="1751" height="2400" fetchPriority="high" alt="Ксения Баранова — автор курса" />
             <div className="author-tag"><small>АВТОР КУРСА</small><b>Ксения Баранова</b><span>16 лет в образовании<br />400 000+ учеников</span></div>
           </div>
         </section>
@@ -181,7 +189,7 @@ export default function Home() {
       </section>
 
       <section className="register shell" id="register">
-        <div className="register-copy"><small>15–17 СЕНТЯБРЯ · 19:00 · УЧАСТИЕ БЕСПЛАТНОЕ</small><h2>Закрепите место<br />на онлайн‑курсе</h2><p>Сразу после регистрации пришлём приглашение, программу и подарок.</p></div>
+        <div className="register-copy"><small>15–17 СЕНТЯБРЯ · 19:00 · УЧАСТИЕ БЕСПЛАТНОЕ</small><h2>Закрепите место<br />на онлайн‑курсе</h2><p>Сразу после регистрации пришлём приглашение и программу{isShort ? '.' : ' и подарок.'}</p></div>
         <RegisterForm />
       </section>
 
@@ -205,7 +213,7 @@ export default function Home() {
           <div className="passport-copy"><small>ОФИЦИАЛЬНОЕ ПОДТВЕРЖДЕНИЕ</small><h2>Именной<br /><em>нейропаспорт</em></h2><p>Документ от лицензированной образовательной школы для портфолио и подтверждения продвинутого уровня.</p></div>
           <div className="passport-card">
             <div className="passport-head"><Sparkles /><span>NEURO PASSPORT</span><small>ADVANCED · 2026</small></div>
-            <div className="passport-portrait"><img src="./ksenia-red.png" alt="Пример фотографии в нейропаспорте" /></div>
+            <div className="passport-portrait"><img src={asset('ksenia-red.png')} alt="Пример фотографии в нейропаспорте" /></div>
             <div className="passport-identity"><small>ИМЕННОЙ ЦИФРОВОЙ ДОКУМЕНТ</small><strong>КСЕНИЯ<br />БАРАНОВА</strong><span>AI CREATOR · AGENT BUILDER</span></div>
             <div className="passport-holo"><span>AI</span></div>
             <div className="passport-serial">ID · KB 0009 / 2026</div>
@@ -284,8 +292,8 @@ export default function Home() {
           <article className="portfolio-media">
             <div className="artifact-head"><span>02</span><b>AI MEDIA · ГОТОВЫЕ РАБОТЫ</b></div>
             <div className="video-showcase">
-              <figure><video autoPlay muted loop playsInline preload="auto" poster="./ai-video-01-poster.jpg" aria-label="Пример рекламной AI-истории"><source src="./ai-video-01.mp4" type="video/mp4" /></video><figcaption>AI STORY · LOOP</figcaption></figure>
-              <figure><video autoPlay muted loop playsInline preload="auto" poster="./ai-video-02-poster.jpg" aria-label="Пример видео с цифровым аватаром"><source src="./ai-video-02.mp4" type="video/mp4" /></video><figcaption>DIGITAL AVATAR · LOOP</figcaption></figure>
+              <figure><video autoPlay muted loop playsInline preload="auto" poster={asset('ai-video-01-poster.jpg')} aria-label="Пример рекламной AI-истории"><source src={asset('ai-video-01.mp4')} type="video/mp4" /></video><figcaption>AI STORY · LOOP</figcaption></figure>
+              <figure><video autoPlay muted loop playsInline preload="auto" poster={asset('ai-video-02-poster.jpg')} aria-label="Пример видео с цифровым аватаром"><source src={asset('ai-video-02.mp4')} type="video/mp4" /></video><figcaption>DIGITAL AVATAR · LOOP</figcaption></figure>
             </div>
             <h3>AI‑видео: от идеи до готового ролика</h3><p>Сценарий, визуальный стиль, генерация сцен, цифровые аватары и финальный монтаж — без съёмочной группы.</p>
           </article>
@@ -302,7 +310,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="gift-section" id="gift">
+      {!isShort && <section className="gift-section" id="gift">
         <div className="shell gift-wrap">
           <div className="gift-copy">
             <div className="gift-kicker"><Gift /> Подарок за регистрацию <b>0 ₽</b></div>
@@ -335,7 +343,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </section>}
 
       <footer className="site-footer" id="footer">
         <div className="shell footer-main">
